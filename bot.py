@@ -35,14 +35,13 @@ def send_new_posts(items, last_id):
         link = '{!s}{!s}'.format(BASE_POST_URL, item['id'])
         bot.send_message(CHANNEL_NAME, link).wait()
         # Спим секунду, чтобы избежать разного рода ошибок и ограничений (на всякий случай!)
-        time.sleep(1)
+        time.sleep(5)
     return
 
 
 def check_new_posts_vk():
     # Пишем текущее время начала
     logging.info('[VK] Started scanning for new posts')
-    bot.send_message(CHANNEL_NAME, u'Hellorld barowold!').wait()
     with open(FILENAME_VK, 'rt') as file:
         last_id = int(file.read())
         if last_id is None:
