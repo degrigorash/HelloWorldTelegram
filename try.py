@@ -1,4 +1,3 @@
-Вуд:
 # -*- coding: utf-8 -*-
 from twx.botapi import TelegramBot
 
