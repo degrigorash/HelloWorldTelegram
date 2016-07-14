@@ -42,7 +42,7 @@ def send_new_posts(items, last_id):
 def check_new_posts_vk():
     # Пишем текущее время начала
     logging.info('[VK] Started scanning for new posts')
-	bot.send_message(CHANNEL_NAME, 'testo')
+    bot.send_message(CHANNEL_NAME, 'testo')
     with open(FILENAME_VK, 'rt') as file:
         last_id = int(file.read())
         if last_id is None:
