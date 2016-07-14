@@ -4,7 +4,7 @@ import telebot
 
 bot = telebot.TeleBot(config.token)
 
-@bot.messageHandler(content_types=["text"])
+@bot.message_handler(content_types=["text"])
 def repeat_all_messages(message): # Название функции не играет никакой роли, в принципе
     bot.sendMessage(message.chat.id, message.text)
 
