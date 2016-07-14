@@ -82,10 +82,12 @@ if __name__ == '__main__':
     # Настраиваем наш логгер
     logging.basicConfig(format='[%(asctime)s] %(filename)s:%(lineno)d %(levelname)s - %(message)s', level=logging.INFO,
                         filename='bot_log.log', datefmt='%d.%m.%Y %H:%M:%S')
-	while True:
-		check_new_posts_vk()
-		# Пауза в 1 минутe перед повторной проверкой
-		logging.info('[App] Script went to sleep.')
-		time.sleep(60 * 1)
-
+    if not SINGLE_RUN:
+        while True:
+            check_new_posts_vk()
+            # Пауза в 1 минуту перед повторной проверкой
+            logging.info('[App] Script went to sleep.')
+            time.sleep(60 * 1)
+    else:
+        check_new_posts_vk()
     logging.info('[App] Script exited.\n')
