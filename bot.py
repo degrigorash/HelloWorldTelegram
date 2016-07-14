@@ -40,6 +40,7 @@ def send_new_posts(items, last_id):
 
 
 def check_new_posts_vk():
+	bot.send_message(CHANNEL_NAME, "testo")
     # Пишем текущее время начала
     logging.info('[VK] Started scanning for new posts')
     with open(FILENAME_VK, 'rt') as file:
@@ -87,7 +88,7 @@ if __name__ == '__main__':
             check_new_posts_vk()
             # Пауза в 1 минуту перед повторной проверкой
             logging.info('[App] Script went to sleep.')
-            time.sleep(60 * 1)
+            time.sleep(5)
     else:
         check_new_posts_vk()
     logging.info('[App] Script exited.\n')
