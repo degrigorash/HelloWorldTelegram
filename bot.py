@@ -4,8 +4,8 @@ import time
 import eventlet
 import requests
 import logging
-import telebot
 from time import sleep
+from twx.botapi import TelegramBot
 
  # Каждый раз получаем по 10 последних записей со стены
 URL_VK = 'https://api.vk.com/method/wall.get?domain=dota_dbz&count=10&filter=owner'
@@ -15,7 +15,7 @@ BASE_POST_URL = 'https://vk.com/wall-45913431_'
 BOT_TOKEN = '261616344:AAG7mO1GEA6KDwPYFV6V3hiXv1PMfKYlcvM'
 CHANNEL_NAME = '@helloworldru'
 
-bot = telebot.TeleBot(BOT_TOKEN)
+bot = TelegramBot(BOT_TOKEN)
 
 def get_data():
     timeout = eventlet.Timeout(10)
@@ -33,7 +33,7 @@ def send_new_posts(items, last_id):
         if item['id'] <= last_id:
             break
         link = '{!s}{!s}'.format(BASE_POST_URL, item['id'])
-        bot.send_message(CHANNEL_NAME, link)
+        bot.send_message(CHANNEL_NAME, link).wait()
         # Спим секунду, чтобы избежать разного рода ошибок и ограничений (на всякий случай!)
         time.sleep(1)
     return
@@ -42,7 +42,7 @@ def send_new_posts(items, last_id):
 def check_new_posts_vk():
     # Пишем текущее время начала
     logging.info('[VK] Started scanning for new posts')
-    bot.send_message(CHANNEL_NAME, 'testo')
+    bot.send_message(CHANNEL_NAME, u'Hellorld barowold!').wait()
     with open(FILENAME_VK, 'rt') as file:
         last_id = int(file.read())
         if last_id is None:
