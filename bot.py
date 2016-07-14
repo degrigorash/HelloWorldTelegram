@@ -82,7 +82,7 @@ if __name__ == '__main__':
     # Настраиваем наш логгер
     logging.basicConfig(format='[%(asctime)s] %(filename)s:%(lineno)d %(levelname)s - %(message)s', level=logging.INFO,
                         filename='bot_log.log', datefmt='%d.%m.%Y %H:%M:%S')
-    if not SINGLE_RUN:
+    if True:
         while True:
             check_new_posts_vk()
             # Пауза в 1 минуту перед повторной проверкой
