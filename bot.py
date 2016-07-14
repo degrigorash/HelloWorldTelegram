@@ -8,9 +8,9 @@ from time import sleep
 from twx.botapi import TelegramBot
 
  # Каждый раз получаем по 10 последних записей со стены
-URL_VK = 'https://api.vk.com/method/wall.get?domain=dota_dbz&count=10&filter=owner'
+URL_VK = 'https://api.vk.com/method/wall.get?domain=helloworldru&count=10&filter=owner'
 FILENAME_VK = 'last_known_id.txt'
-BASE_POST_URL = 'https://vk.com/wall-45913431_'
+BASE_POST_URL = 'https://vk.com/wall-84791368_'
 
 BOT_TOKEN = '261616344:AAG7mO1GEA6KDwPYFV6V3hiXv1PMfKYlcvM'
 CHANNEL_NAME = '@helloworldru'
@@ -35,7 +35,7 @@ def send_new_posts(items, last_id):
         link = '{!s}{!s}'.format(BASE_POST_URL, item['id'])
         bot.send_message(CHANNEL_NAME, link).wait()
         # Спим секунду, чтобы избежать разного рода ошибок и ограничений (на всякий случай!)
-        time.sleep(5)
+        time.sleep(1)
     return
 
 
@@ -87,7 +87,7 @@ if __name__ == '__main__':
             check_new_posts_vk()
             # Пауза в 1 минуту перед повторной проверкой
             logging.info('[App] Script went to sleep.')
-            time.sleep(5)
+            time.sleep(60)
     else:
         check_new_posts_vk()
     logging.info('[App] Script exited.\n')
