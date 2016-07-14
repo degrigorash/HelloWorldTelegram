@@ -1,1 +1,1 @@
-telebot
+pip install eventlet
